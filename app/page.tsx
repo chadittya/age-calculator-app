@@ -79,9 +79,28 @@ export default function Home() {
           // calculate age
           const birthDate = new Date(`${year}-${month}-${day}`);
           const today = new Date();
-          const years = today.getFullYear() - birthDate.getFullYear();
-          const months = today.getMonth() - birthDate.getMonth();
-          const days = today.getDate() - birthDate.getDate();
+          let years = today.getFullYear() - birthDate.getFullYear();
+          let months = today.getMonth() - birthDate.getMonth();
+          let days = today.getDate() - birthDate.getDate();
+
+          if (months < 0 || (months === 0 && days < 0)) {
+            years--;
+            months = 12 - (birthDate.getMonth() - today.getMonth());
+            if (days < 0) {
+              months--;
+              days = birthDate.getDate() - today.getDate() + 31;
+            } else {
+              days = birthDate.getDate() - today.getDate();
+            }
+          } else {
+            if (days < 0) {
+              months--;
+              days = birthDate.getDate() - today.getDate() + 31;
+            } else {
+              days = birthDate.getDate() - today.getDate();
+            }
+          }
+
           setAge({
             years: years.toString(),
             months: months.toString(),

@@ -73,49 +73,29 @@ export default function Home() {
     if (formIsValid) {
       setIsValid(true);
       let countdown = 20;
-      const timer = setInterval(() => {
-        if (countdown <= 0) {
-          clearInterval(timer);
-          // calculate age
-          const birthDate = new Date(`${year}-${month}-${day}`);
-          const today = new Date();
-          let years = today.getFullYear() - birthDate.getFullYear();
-          let months = today.getMonth() - birthDate.getMonth();
-          let days = today.getDate() - birthDate.getDate();
 
-          if (months < 0 || (months === 0 && days < 0)) {
-            years--;
-            months = 12 - (birthDate.getMonth() - today.getMonth());
-            if (days < 0) {
-              months--;
-              days = birthDate.getDate() - today.getDate() + 31;
-            } else {
-              days = birthDate.getDate() - today.getDate();
-            }
-          } else {
-            if (days < 0) {
-              months--;
-              days = birthDate.getDate() - today.getDate() + 31;
-            } else {
-              days = birthDate.getDate() - today.getDate();
-            }
-          }
+      // calculate age
+      const birthDate = new Date(`${year}-${month}-${day}`);
+      const today = new Date();
+      const diffTime = today.getTime() - birthDate.getTime();
+      let years = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365.25));
+      let months = Math.floor((diffTime / (1000 * 60 * 60 * 24 * 30.44)) % 12);
+      let days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) % 30;
+      if (days < 0) {
+        days += 30;
+        months--;
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
 
-          setAge({
-            years: years.toString(),
-            months: months.toString(),
-            days: days.toString(),
-          });
-          setShowAge(true);
-        } else {
-          setAge({
-            years: Math.floor(Math.random() * 100).toString(),
-            months: Math.floor(Math.random() * 12).toString(),
-            days: Math.floor(Math.random() * 31).toString(),
-          });
-          countdown--;
-        }
-      }, 100);
+      setAge({
+        years: years.toString(),
+        months: months.toString(),
+        days: days.toString(),
+      });
+      setShowAge(true);
 
       setTimeout(() => {
         setShowAge(false);

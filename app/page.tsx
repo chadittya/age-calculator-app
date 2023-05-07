@@ -191,7 +191,7 @@ export default function Home() {
               )}
             </div>
             <div className="absolute md:right-6 md:top-[5.9rem] top-[4.3rem] right-[4.4rem]">
-              <button type="submit">
+              <button type="submit" aria-label="calculate">
                 <Image
                   src={iconArrow}
                   alt=""
@@ -202,30 +202,30 @@ export default function Home() {
           </form>
           <hr className="mb-6" />
           <div className="flex flex-col font-extrabold italic md:text-5xl text-2xl">
-            <label>
+            <h1>
               <span
                 className={`text-chPurple ${showAge ? "animate-bounce" : ""}`}
               >
                 {age.years}
               </span>{" "}
               years
-            </label>
-            <label>
+            </h1>
+            <h1>
               <span
                 className={`text-chPurple ${showAge ? "animate-bounce" : ""}`}
               >
                 {age.months}
               </span>{" "}
               months
-            </label>
-            <label>
+            </h1>
+            <h1>
               <span
                 className={`text-chPurple ${showAge ? "animate-bounce" : ""}`}
               >
                 {age.days}
               </span>{" "}
               days
-            </label>
+            </h1>
           </div>
         </div>
       </div>

@@ -56,10 +56,7 @@ Users should be able to:
 1. Handling form submission and form fields validation in React.
 2. Getting data from the current date using new Date() method in JavaScript.
 3. Using the `|` operator in TypeScript to define a variable that can have more than one type.
-4. Generating a random number using `Math.random()` and `Math.floor()` methods in JavaScript.
-5. Using `setInterval()` to run a function at a specified interval.
-6. Using `clearInterval()` to stop a function that is running on intervals.
-7. Using `setTimeout()` to run a function after a specified delay.
+4. Using `setTimeout()` to run a function after a specified delay.
 
 ## Author
 
